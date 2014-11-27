@@ -1,11 +1,15 @@
 require 'better_errors'
 require 'sinatra/reloader'
+require 'sinatra/respond_with'
 require 'sinatra/base'
 
 require 'bildhaus/models'
 
 class Bildhaus::App < Sinatra::Base
 	configure :development do
+		set :root, $rack_root_dir
+
+		register Sinatra::RespondWith
 		register Sinatra::Reloader
 
 		use BetterErrors::Middleware
@@ -13,7 +17,21 @@ class Bildhaus::App < Sinatra::Base
 	end
 
 	# /project => Übersicht der Projekte;
+
 	# /project/guillelmus/ => Übersicht des Projekt;
+	get '/project/:project_name' do
+		project_name = params[:project_name]
+
+		project = Bildhaus::Project.find_by_name!(project_name)
+
+		data = {
+			:title => project.name,
+			:project => project,
+		}
+
+		respond_with :project, data
+	end
+
 	# /project/guillelmus/image/ => Übersicht der Bilder;
 	# /project/guillelmus/image/B_1r => Übersicht des Bild "B_1r";
 	# /project/guillelmus/image/B_1r/metadata => Metadata für "B_1r";

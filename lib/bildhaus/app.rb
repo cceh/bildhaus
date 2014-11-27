@@ -14,6 +14,7 @@ class Bildhaus::App < Sinatra::Base
 
 		use BetterErrors::Middleware
 		BetterErrors.application_root = __dir__
+		use ActiveRecord::ConnectionAdapters::ConnectionManagement
 	end
 
 	# /project => Übersicht der Projekte;

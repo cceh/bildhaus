@@ -34,7 +34,23 @@ class Bildhaus::App < Sinatra::Base
 	end
 
 	# /project/guillelmus/image/ => Übersicht der Bilder;
+
 	# /project/guillelmus/image/B_1r => Übersicht des Bild "B_1r";
+	get '/project/:project_name/image/:image_name' do
+		project_name = params[:project_name]
+		image_name = params[:image_name]
+
+		project = Bildhaus::Project.find_by_name!(project_name)
+		image = project.images.find_by_name!(image_name)
+
+		data = {
+			:title => image.name,
+			:image => image,
+		}
+
+		respond_with :image, data
+	end
+
 	# /project/guillelmus/image/B_1r/metadata => Metadata für "B_1r";
 	# /project/guillelmus/image/B_1r/original => Originaldatei für "B_1r";
 

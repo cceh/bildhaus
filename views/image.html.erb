@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta charset=utf-8 />
+		<title><%= title %></title>
+	</head>
+	<body>
+		<h1>Image <%= image.name %> (from project <%= image.project.name %>)</h1>
+
+		<ul>
+			<% image.versions.each do |version| %>
+				<% version_url = "/project/#{image.project.name}/image/#{image.name}/v/#{version.name}"%>
+				<li><a href="<%= version_url %>"><%= version.name %></a></li>
+			<% end %>
+		</ul>
+	</body>
+</html>

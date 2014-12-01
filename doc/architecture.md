@@ -13,7 +13,7 @@ thumbnails, low-resolution JPEGs, etc.).
 _Stable_ URLs are URLs that will be [dereferenceable][1] via HTTP for
 the foreseeable future.
 
-[1]: http://www.w3.org/2001/tag/doc/httpRange-14/HttpRange-14.html "Dereferencing HTTP URIs"
+[1]: http://www.w3.org/2001/tag/doc/httpRange-14/2007-08-31/HttpRange-14.html "Dereferencing HTTP URIs"
 
 Building pieces
 ---------------

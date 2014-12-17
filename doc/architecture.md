@@ -27,7 +27,7 @@ There are four conceptual parts to Bildhaus:
 
 The URL resolver is a publicly available HTTP service that responds to
 requests for URLs. What the resolver does is to decode these URLs,
-understand which image and in which image is being requested and search
+understand which image in which version is being requested and search
 the database for an appropriate location, be it local (on the file
 system) or remote (available as at another HTTP URL).
 
@@ -48,9 +48,9 @@ Separation of concerns
 
 The URL resolver expects the location database to be already populated.
 The URL resolver leaves this task to the uploader part and does not
-concern itself with how the databases has been populated.
+concern itself with how the databases have been populated.
 
-Similarly, URL resolver do not care for how the files are stored in
+Similarly, the URL resolver does not care for how the files are stored in
 the local filesystem or remotely. It only needs a valid file path
 or HTTP URL.
 
